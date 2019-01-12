@@ -4,13 +4,15 @@
 
 In Startup.cs:
 
-public void ConfigureServices(IServiceCollection services)
+
+        public void ConfigureServices(IServiceCollection services)
         {
-            services.UseCustomCloudMapClient<CloudMapClient>();  // Add this line only if you use your own implementation of ICloudMapClient
+            services.UseCustomCloudMapClient<CloudMapClient>(); 
+            // Add this line only if you use your own implementation of ICloudMapClient
             services.AddMvc();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public async  Task Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             await app.RegisterWithCloudMap(new CloudMapRegistrationOptions
