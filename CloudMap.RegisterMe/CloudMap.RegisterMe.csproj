@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Aref Karimi</Authors>
+    <Company />
+    <Description>Allows an Asp.net Core-based microservice which is deployed onto an EC2 instance, register themselves as an serviec instance to an existing AWS Cloud Map service.</Description>
+    <PackageProjectUrl>https://github.com/aussiearef/AWS.CloudMap.RegisterMe</PackageProjectUrl>
+    <PackageIconUrl>https://s3.amazonaws.com/ionic-marketplace/nearmeapp-ionic2/icon.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/aussiearef/AWS.CloudMap.RegisterMe</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.EC2" Version="3.3.79" />
+    <PackageReference Include="AWSSDK.ServiceDiscovery" Version="3.3.3.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
