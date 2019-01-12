@@ -2,10 +2,20 @@
 
 ## Allows ASP.Net Core-based microservices to register themselves with an already existing AWS Cloud Map Service.
 
-In Startup.cs, in Configure method:
+In Startup.cs:
 
-var client = new CloudMapClient();
-var regTask = client.RegisterEc2Async(<your service Id>);
-regTask.Wait();
+public void ConfigureServices(IServiceCollection services)
+        {
+            services.UseCustomCloudMapClient<CloudMapClient>();  // Add this line only if you use your own implementation of ICloudMapClient
+            services.AddMvc();
+        }
 
-Alternatively you can change the Configure method to be async.
+        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        public async  Task Configure(IApplicationBuilder app, IHostingEnvironment env)
+        {
+            await app.RegisterWithCloudMap(new CloudMapRegistrationOptions
+            {
+                ServiceId = "<your service Id>"
+            });
+            app.UseMvc();
+        }
